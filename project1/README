@@ -1,0 +1,6 @@
+Building
+========
+
+Just run `make`, and the binaries will be placed into a local bin/ folder. To
+disable optimization and enable debugging symbols, use the 'all-debug' target
+like so: `make all-debug`.
