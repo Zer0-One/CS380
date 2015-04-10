@@ -1,3 +1,9 @@
+Project Description
+===================
+
+Project 1 involves building an echo client/server in order to get familiar with
+sockets and handling multiple connections concurrently.
+
 Building
 ========
 

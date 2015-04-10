@@ -4,7 +4,6 @@
 #include <netdb.h>
 #include <string.h>
 #include <sys/socket.h>
-#include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
@@ -113,7 +112,7 @@ int main(){
     socklen_t addr_len = sizeof(addr);
     char ptr_host[PTR_HOST];
     int ptr;
-    while(1){
+    for(;;){
         client_socket = accept(listen_socket, (struct sockaddr*)&addr, &addr_len);
         if(client_socket == -1){
             printf("Error: Could not accept incoming socket connection: %s\n", strerror(errno));
