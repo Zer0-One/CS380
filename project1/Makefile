@@ -13,14 +13,14 @@ all-debug : clean project1-debug
 
 project1 :
 			mkdir bin
-			$(cc) -O2 -std=c99 -pedantic-errors -Wall -D_XOPEN_SOURCE=600 -ldl $(server_sources) -o $(bin)/echod
-			$(cc) -O2 -std=c99 -pedantic-errors -Wall -D_XOPEN_SOURCE=600 -ldl $(client_sources) -o $(bin)/echo_client
+			$(cc) -O2 -std=c99 -pedantic-errors -Wall -D_XOPEN_SOURCE=600 $(server_sources) -o $(bin)/echod
+			$(cc) -O2 -std=c99 -pedantic-errors -Wall -D_XOPEN_SOURCE=600 $(client_sources) -o $(bin)/echo_client
 			chmod +x $(bin)/*
 
 project1-debug :
 			mkdir bin
-			$(cc) -g -std=c99 -pedantic-errors -Wall -D_XOPEN_SOURCE=600 -ldl $(serer_sources) -o $(bin)/echod
-			$(cc) -g -std=c99 -pedantic-errors -Wall -D_XOPEN_SOURCE=600 -ldl $(client_sources) -o $(bin)/echo_client
+			$(cc) -g -std=c99 -pedantic-errors -Wall -D_XOPEN_SOURCE=600 $(serer_sources) -o $(bin)/echod_debug
+			$(cc) -g -std=c99 -pedantic-errors -Wall -D_XOPEN_SOURCE=600 $(client_sources) -o $(bin)/echo_client_debug
 			chmod +x $(bin)/*
 
 clean :

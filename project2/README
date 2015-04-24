@@ -1,0 +1,14 @@
+Project Description
+===================
+
+Project 2 involves writing a very simple client for a chat server that the
+professor has written. The first line you send is interpreted as a username.
+Every line that you send after the first is sent to every use connected to the
+server.
+
+Building
+========
+
+Just run `make`, and the binaries will be placed into a local bin/ folder. To
+disable optimization and enable debugging symbols, use the 'all-debug' target
+like so: `make all-debug`.
