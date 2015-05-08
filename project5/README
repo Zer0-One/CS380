@@ -1,0 +1,30 @@
+Project Description
+===================
+
+Project 5 involves writing a client for a server that checks to see if it is
+receiving well-formatted UDP/IPv4 packets. The goal is to send a total of 12
+packets, each double the size of the last. Data size will start at 2 bytes.
+The contents of the data section must be random. The destination port number is
+received from the server after sending an initial IPv4 packet (sans-UDP) with
+0xDEADBEEF in the data section.
+
+The UDP segment structure is given below (taken from RFC768).
+
+0      7 8     15 16    23 24    31  
++--------+--------+--------+--------+ 
+|     Source      |   Destination   | 
+|      Port       |      Port       | 
++--------+--------+--------+--------+ 
+|                 |                 | 
+|     Length      |    Checksum     | 
++--------+--------+--------+--------+ 
+|                                   |
+|          data octets              |
++-----------------------------------+
+
+Building
+========
+
+Just run `make`, and the binaries will be placed into a local bin/ folder. To
+disable optimizations and enable debugging symbols, use the 'all-debug' target
+like so: `make all-debug`.
