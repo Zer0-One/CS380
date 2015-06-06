@@ -1,0 +1,47 @@
+Project Description
+===================
+
+Project 6 involves writing a client for a server that checks to see if it is
+receiving well-formatted TCP/IPv4 packets. The goal is to perform a TCP
+handshake, and then send a total of 12 packets, each double the size of the
+last, followed by a connection teardown. Data size will start at 2 bytes.  The
+contents of the data section must be random. The source and destination ports
+don't matter.
+
+The TCP segment structure is given below (taken from RFC793).
+
+0                   1                   2                   3   
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Source Port          |       Destination Port        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                        Sequence Number                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Acknowledgment Number                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Data |           |U|A|P|R|S|F|                               |
+| Offset| Reserved  |R|C|S|S|Y|I|            Window             |
+|       |           |G|K|H|T|N|N|                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |         Urgent Pointer        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Options                    |    Padding    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                             data                              |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Building
+========
+
+Just run `make`, and the binaries will be placed into a local bin/ folder. To
+disable optimizations and enable debugging symbols, use the 'all-debug' target
+like so: `make all-debug`.
+
+Notes
+=====
+
+Note that, unlike the last few projects, we need to define `_DEFAULT_SOURCE=1`
+(what used to be `_BSD_SOURCE` or `_SVID_SOURCE`) here, since Linux doesn't
+expose its own interface for modifying TCP segment headers (and SUSv3/SUSv4
+don't require one). As written in the man page for `feature_test_macros`, when
+standards conflict, BSD definitions will be disfavored.
